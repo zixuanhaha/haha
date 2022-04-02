@@ -15,3 +15,4 @@ if __name__ == '__main__':
 
 # 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
 import tensorflow as tf
+tf.a = 3
