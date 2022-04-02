@@ -1,18 +1,31 @@
-# 这是一个示例 Python 脚本。
+##二项式分布
 
-# 按 ⌃R 执行或将其替换为您的代码。
-# 按 双击 ⇧ 在所有地方搜索类、文件、工具窗口、操作和设置。
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+from scipy import stats
 
+import pandas as pd
+import seaborn as sns
 
-def print_hi(name):
-    # 在下面的代码行中使用断点来调试脚本。
-    print(f'Hi, {name}')  # 按 ⌘F8 切换断点。
+n = 20
+p = 0.3
+k = np.arange(0, 41)
+# 定义二项分布
+binomial = stats.binom.pmf(k, n, p)
 
+# 二项分布可视化
+plt.plot(k, binomial, 'o-')
+plt.title('binomial:n=%i,p=%.2f' % (n, p), fontsize=15)
+plt.xlabel('number of success')
+plt.ylabel('probability of success', fontsize=15)
+plt.grid(True)
+plt.show()
 
-# 按间距中的绿色按钮以运行脚本。
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
-import tensorflow as tf
-tf.a = 3
+# 探索特征分布、相关性
+data1=pd.read_csv('/Volumes/学习/git/haha/hour.csv',header=0)
+#data_pd=data1.toPandas()
+sns.set(style='whitegrid',context='notebook')
+cols=['temp','atemp','label']
+sns.pairplot(data1[cols],height=2.5)
+plt.show()
